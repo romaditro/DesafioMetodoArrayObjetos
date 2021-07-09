@@ -60,7 +60,7 @@ dental.map(function(item) {
     consultaMedica += `<p> ${[item.hora, item.especialista, item.paciente, item.rut, item.prevision].join(" - ")} </p>`;
 });
 
-document.write('<h2>Lista consulta Dental</h2>');
+document.write('<h2>Req. #3 - Lista consulta Dental</h2>');
 document.write(consultaMedica);
 
 
@@ -74,13 +74,53 @@ union.forEach(function(item) {
     consultaTotal += `<p> ${item.paciente} .</p>`;
 });
 
-document.write('<h2>Lista consulta Total</h2>');
+document.write('<h2>Req. #4 - Lista consulta Total</h2>');
 document.write(consultaTotal);
+
+
+
+//Req. #5. Filtrar aquellos pacientes que indican ser de ISAPRE en la lista de consultas médica de Dental.
+let dentalIsapre = dental.filter(function(dental){
+    return (dental.prevision == "ISAPRE")
+});
+
+
+let dentalFiltrado = document.getElementById("dentalFiltrado");
+dentalFiltrado = "";
+dentalIsapre.map(function(item) {
+    dentalFiltrado += `<p> ${[item.paciente, item.prevision].join(" - ")} </p>`;
+});
+
+document.write('<h2>Req. #5 - Lista consulta Dental Filtrada por Isapre</h2>');
+document.write(dentalFiltrado);
+
+
+//Req. #6. Filtrar aquellos pacientes que indican ser de FONASA en la lista de consultas médicas de Traumatología
+let traumatologiaFonasa = traumatologia.filter(function(traumatologia){
+    return (traumatologia.prevision == "FONASA")
+});
+
+
+let traumotologiaFiltrado = document.getElementById("traumotologiaFiltrado");
+traumotologiaFiltrado = "";
+traumatologiaFonasa.map(function(item) {
+    traumotologiaFiltrado += `<p> ${[item.paciente, item.prevision].join(" - ")} </p>`;
+});
+
+document.write('<h2>Req. #6 - Lista consulta traumotologia Filtrada por Fonasa</h2>');
+document.write(traumotologiaFiltrado);
+
 
 //Agregar código para el desafio 2 aquí
 
 </script>
 <body>
     <p id="consultaMedica"></p>
+
+    <p id="consultaTotal"></p>
+
+    <p id="dentalFiltrado"></p>
+
+    <p id="traumotologiaFiltrado"></p>
 </body>
 </html>
